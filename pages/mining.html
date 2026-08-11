@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>⛏️ PyroMining - Guide | MythicaOnline Wiki</title>
+
+    <style>
+        :root {
+            --bg: #111318;
+            --card: #1b222c;
+            --card-hover: #242832;
+            --border: #303b49;
+		
+
+            --text: #e6edf3;
+            --muted: #9da7b3;
+
+            --green: #65d68b;
+            --blue: #58a6ff;
+            --cyan: #56d4dd;
+            --yellow: #f2cc60;
+            --orange: #ff9f43;
+            --red: #ff6b6b;
+            --purple: #b58cff;
+
+            --code-bg: #111318;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #182331 0,
+                    var(--bg) 42%
+                );
+
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------------- HEADER ---------------- */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            height: 64px;
+
+            background: rgba(13, 17, 23, 0.92);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: 1250px;
+            height: 100%;
+            margin: auto;
+
+            padding: 0 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 5px 12px 25px;
+
+            font-size: px;
+            font-weight: 800;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+
+            display: grid;
+            place-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #5b21b6
+                );
+
+            border-radius: 9px;
+
+            box-shadow:
+                0 5px 20px rgba(139, 92, 246, .25);
+        }
+		
+        .logo span {
+            color: var(--accent-light);
+        }
+
+        nav {
+            display: flex;
+            gap: 18px;
+        }
+
+        nav a {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* ---------------- LAYOUT ---------------- */
+
+        .layout {
+            max-width: 1250px;
+            margin: auto;
+
+            padding: 35px 22px 80px;
+
+            display: grid;
+            grid-template-columns: 245px minmax(0, 1fr);
+            gap: 30px;
+        }
+
+        /* ---------------- SIDEBAR ---------------- */
+
+        .sidebar {
+            position: sticky;
+            top: 94px;
+
+            height: fit-content;
+
+            background: rgba(21, 27, 35, 0.85);
+
+            border: 1px solid var(--border);
+            border-radius: 12px;
+
+            padding: 18px;
+        }
+
+        .sidebar-title {
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .sidebar a {
+            display: block;
+
+            padding: 6px 9px;
+
+            color: var(--muted);
+            font-size: 13px;
+
+            border-radius: 6px;
+        }
+
+        .sidebar a:hover {
+            background: var(--card-hover);
+            color: white;
+            text-decoration: none;
+        }
+
+        /* ---------------- ARTICLE ---------------- */
+
+        article {
+            min-width: 0;
+        }
+
+        .hero {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(101, 214, 139, .12),
+                    rgba(88, 166, 255, .08)
+                );
+
+            border: 1px solid var(--border);
+            border-radius: 15px;
+
+            padding: 35px;
+
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+
+            font-size: clamp(30px, 5vw, 45px);
+            line-height: 1.15;
+        }
+
+        .intro {
+            color: var(--muted);
+            font-size: 16px;
+            max-width: 850px;
+        }
+
+        h2 {
+            margin-top: 45px;
+
+            padding-bottom: 9px;
+
+            border-bottom: 1px solid var(--border);
+
+            font-size: 25px;
+        }
+
+        h3 {
+            margin-top: 28px;
+
+            color: #f0f6fc;
+
+            font-size: 19px;
+        }
+
+        p {
+            color: #c9d1d9;
+        }
+
+        /* ---------------- CARDS ---------------- */
+
+        .card {
+            background: var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 11px;
+
+            padding: 20px;
+
+            margin: 18px 0;
+        }
+
+        .card:hover {
+            border-color: #3d4b5c;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .stat {
+            background: #131a22;
+
+            border: 1px solid var(--border);
+            border-radius: 9px;
+
+            padding: 16px;
+        }
+
+        .stat-title {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .stat-value {
+            margin-top: 4px;
+
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* ---------------- TABLES ---------------- */
+
+        .table-wrapper {
+            overflow-x: auto;
+
+            margin: 18px 0;
+        }
+
+        table {
+            width: 100%;
+            min-width: 500px;
+
+            border-collapse: collapse;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        th {
+            background: #242d38;
+
+            color: white;
+
+            text-align: left;
+            font-size: 13px;
+
+            padding: 12px;
+        }
+
+        td {
+            padding: 11px 12px;
+
+            border-top: 1px solid var(--border);
+
+            color: #c9d1d9;
+        }
+
+        tr:hover td {
+            background: #202832;
+        }
+
+        /* ---------------- CODE ---------------- */
+
+        code {
+            background: var(--code-bg);
+
+            color: #7ee787;
+
+            border: 1px solid #242b34;
+            border-radius: 5px;
+
+            padding: 2px 6px;
+
+            font-family:
+                "SFMono-Regular",
+                Consolas,
+                "Liberation Mono",
+                monospace;
+
+            font-size: .9em;
+        }
+
+        /* ---------------- CALLOUTS ---------------- */
+
+        .tip {
+            border-left: 4px solid var(--green);
+
+            background: rgba(101, 214, 139, .08);
+
+            padding: 14px 17px;
+
+            margin: 18px 0;
+
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning {
+            border-left: 4px solid var(--yellow);
+
+            background: rgba(242, 204, 96, .08);
+
+            padding: 14px 17px;
+
+            margin: 18px 0;
+
+            border-radius: 0 8px 8px 0;
+        }
+
+        .boss {
+            border-left: 4px solid var(--red);
+
+            background: rgba(255, 107, 107, .08);
+
+            padding: 14px 17px;
+
+            margin: 18px 0;
+
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* ---------------- BADGES ---------------- */
+
+        .badge {
+            display: inline-block;
+
+            padding: 3px 8px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            margin: 2px;
+        }
+
+        .green {
+            color: #8ff0a9;
+            background: rgba(101, 214, 139, .13);
+        }
+
+        .blue {
+            color: #8bc4ff;
+            background: rgba(88, 166, 255, .13);
+        }
+
+        .orange {
+            color: #ffbd73;
+            background: rgba(255, 159, 67, .13);
+        }
+
+        .purple {
+            color: #c8a7ff;
+            background: rgba(181, 140, 255, .13);
+        }
+
+        /* ---------------- LISTS ---------------- */
+
+        ul,
+        ol {
+            padding-left: 24px;
+        }
+
+        li {
+            margin: 5px 0;
+            color: #c9d1d9;
+        }
+
+        /* ---------------- COMMAND BOX ---------------- */
+
+        .command-list {
+            display: grid;
+            gap: 9px;
+        }
+
+        .command {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            background: #11171e;
+
+            border: 1px solid var(--border);
+            border-radius: 8px;
+
+            padding: 10px 13px;
+        }
+
+        .command-description {
+            color: var(--muted);
+            font-size: 13px;
+            text-align: right;
+        }
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+            max-width: 1250px;
+
+            margin: auto;
+
+            padding: 25px 22px 45px;
+
+            border-top: 1px solid var(--border);
+
+            color: var(--muted);
+
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* ---------------- MOBILE ---------------- */
+
+        @media (max-width: 850px) {
+
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .layout {
+                padding: 20px 13px 60px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .command {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .command-description {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    
+	<div class="header-inner">
+
+        <div class="logo">
+            <div class="logo-icon">⛏</div><a href="../index.html" style="color: white; text-decoration: none;">MythicaOnline</a></span>
+        </div>
+		
+        <nav>
+            <a href="#quick-start">Quick Start</a>
+            <a href="#fluxes">Fluxes</a>
+            <a href="#gemstones">Gemstones</a>
+            <a href="#artifacts">Artifacts</a>
+            <a href="#vessels">Vessels</a>
+            <a href="#commands">Commands</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-title">
+            ⛏️ PyroMining
+        </div>
+
+        <a href="#quick-start">🍃 Quick Start</a>
+        <a href="#shop">💸 Mining Shop</a>
+        <a href="#fluxes">🔥 Fluxes</a>
+        <a href="#gemstones">💎 Gemstones</a>
+        <a href="#dust">🌫️ Mysterious Dust</a>
+        <a href="#artifacts">🗿 Artifacts</a>
+        <a href="#fossils">🦴 Fossils</a>
+        <a href="#vessels">⚗️ Vessels</a>
+        <a href="#thralls">🕳️ Thralls</a>
+        <a href="#runes">🌀 Runes</a>
+        <a href="#oracles">🧿 Oracles</a>
+        <a href="#zeta">🪙 Zeta</a>
+        <a href="#levels">📈 Mining Levels</a>
+        <a href="#seasonal">🎃 Seasonal Event</a>
+        <a href="#commands">🧰 Commands</a>
+
+    </aside>
+
+
+    <!-- ARTICLE -->
+
+    <main>
+        <article>
+
+            <section class="hero">
+
+                <h1>⛏️ PyroMining - Guide</h1>
+
+                <p class="intro">
+                    PyroMining adds new drops, bosses, currency, artifacts,
+                    and upgrades to everyday mining.
+                </p>
+
+                <div class="tip">
+                    <strong>Important:</strong>
+                    Natural, unplaced ores are what count toward all
+                    PyroMining drops and progression.
+                </div>
+
+            </section>
+
+
+            <!-- QUICK START -->
+
+            <section id="quick-start">
+
+                <h2>🍃 Quick Start</h2>
+
+                <ol>
+                    <li>
+                        Mine natural ores.
+                        <strong>Silk Touch is fine</strong> —
+                        drops still roll. Placed ores don't count.
+                    </li>
+
+                    <li>
+                        Sell basics at <code>/mine shop</code>
+                        such as Fluxes, Gemstones and identified loot.
+                    </li>
+
+                    <li>
+                        Open the UI with <code>/mine menu</code>
+                        for Shop, Artifacts, Vessels, Journal and more.
+                    </li>
+
+                    <li>
+                        Build a Refinery using a dropper facing upward
+                        with an oak fence on top.
+                    </li>
+
+                    <li>
+                        Level up by mining.
+                        XP requirements scale by
+                        <strong>1.125× each level</strong>.
+                    </li>
+                </ol>
+
+                <div class="card">
+                    Check your stats with
+                    <code>/mine stats</code>.
+                </div>
+
+            </section>
+
+
+            <!-- SHOP -->
+
+            <section id="shop">
+
+                <h2>💸 The Mining Shop</h2>
+
+                <div class="card">
+
+                    <p>
+                        Sell PyroMining items at
+                        <code>/mine shop</code>.
+                    </p>
+
+                    <ul>
+                        <li>Gemstones</li>
+                        <li>Fluxes</li>
+                        <li>Artifacts</li>
+                        <li>Other mining loot</li>
+                    </ul>
+
+                    <p>
+                        Extra server money can also come from normal
+                        economy systems such as <code>/jobs</code>.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FLUXES -->
+
+            <section id="fluxes">
+
+                <h2>🔥 Fluxes</h2>
+
+                <p>
+                    Fluxes are simple cash items that can be sold at
+                    <code>/mine shop</code>.
+                </p>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Flux</th>
+                                <th>Sources</th>
+                                <th>Chance</th>
+                                <th>Sell Price</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <span class="badge green">
+                                        Basic Flux
+                                    </span>
+                                </td>
+
+                                <td>
+                                    Copper, Coal, Lapis, Diamond,
+                                    Redstone, Emerald
+                                </td>
+
+                                <td>4.5%</td>
+
+                                <td>$10</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <span class="badge orange">
+                                        Blazed Flux
+                                    </span>
+                                </td>
+
+                                <td>
+                                    Nether Gold Ore,
+                                    Nether Quartz Ore
+                                </td>
+
+                                <td>2.5%</td>
+
+                                <td>$8</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="tip">
+                    💡 Fluxes have no other uses, so sell them freely.
+                </div>
+
+            </section>
+
+
+            <!-- GEMSTONES -->
+
+            <section id="gemstones">
+
+                <h2>💎 Gemstones</h2>
+
+                <p>
+                    Gemstones drop according to ore tier.
+                    You can examine or grade a gemstone by
+                    right-clicking it to apply a Quality Multiplier.
+                </p>
+
+                <h3>Ore → Tier</h3>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Tier</th>
+                                <th>Ore</th>
+                                <th>Base Price</th>
+                                <th>Drop Chance</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>T1</td>
+                                <td><code>COAL_ORE</code></td>
+                                <td>$10</td>
+                                <td>2.5%</td>
+                            </tr>
+
+                            <tr>
+                                <td>T2</td>
+                                <td><code>REDSTONE_ORE</code></td>
+                                <td>$15</td>
+                                <td>1.5%</td>
+                            </tr>
+
+                            <tr>
+                                <td>T3</td>
+                                <td><code>NETHER_QUARTZ_ORE</code></td>
+                                <td>$30</td>
+                                <td>1.25%</td>
+                            </tr>
+
+                            <tr>
+                                <td>T4</td>
+                                <td><code>LAPIS_ORE</code></td>
+                                <td>$50</td>
+                                <td>1.0%</td>
+                            </tr>
+
+                            <tr>
+                                <td>T5</td>
+                                <td><code>EMERALD_ORE</code></td>
+                                <td>$75</td>
+                                <td>0.95%</td>
+                            </tr>
+
+                            <tr>
+                                <td>T6</td>
+                                <td><code>DIAMOND_ORE</code></td>
+                                <td>$100</td>
+                                <td>0.8%</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <h3>Quality Multipliers</h3>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Quality</th>
+                                <th>Multiplier</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Ruined</td>
+                                <td>0.92×</td>
+                            </tr>
+
+                            <tr>
+                                <td>Badly Damaged</td>
+                                <td>0.95×</td>
+                            </tr>
+
+                            <tr>
+                                <td>Damaged</td>
+                                <td>0.99×</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <span class="badge green">
+                                        Worn
+                                    </span>
+                                </td>
+                                <td>2.5×</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <span class="badge purple">
+                                        Pristine
+                                    </span>
+                                </td>
+                                <td>5.0×</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="warning">
+                    ⚠️ You can sell unexamined gems safely for their
+                    base price, or examine them for a chance at a much
+                    higher payout.
+                </div>
+
+            </section>
+
+
+            <!-- DUST -->
+
+            <section id="dust">
+
+                <h2>🌫️ Mysterious Dust → Refinery</h2>
+
+                <div class="card">
+
+                    <p>
+                        Mysterious Dust drops while mining any ore.
+                    </p>
+
+                    <div class="grid">
+
+                        <div class="stat">
+                            <div class="stat-title">
+                                Drop Chance
+                            </div>
+
+                            <div class="stat-value">
+                                1.2%
+                            </div>
+                        </div>
+
+                        <div class="stat">
+                            <div class="stat-title">
+                                Refinery
+                            </div>
+
+                            <div class="stat-value">
+                                Dropper + Oak Fence
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p>
+                        Fill the dropper with dust. Dust stacks are
+                        supported. Right-click the fence to refine.
+                    </p>
+
+                </div>
+
+
+                <h3>Refinery Dust Loot Table</h3>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Loot</th>
+                                <th>Chance</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Rune Dust</td>
+                                <td>75%</td>
+                            </tr>
+
+                            <tr>
+                                <td>Oracleite</td>
+                                <td>4%</td>
+                            </tr>
+
+                            <tr>
+                                <td>Ancient Relic</td>
+                                <td>7%</td>
+                            </tr>
+
+                            <tr>
+                                <td>Shattered Requium Orb</td>
+                                <td>10%</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="tip">
+                    Oracleite requires mining level 20+ to appear.
+                </div>
+
+                <p>
+                    The Refinery can also craft Vessels from Fossils.
+                </p>
+
+            </section>
+
+
+            <!-- ARTIFACTS -->
+
+            <section id="artifacts">
+
+                <h2>🗿 Artifacts</h2>
+
+                <p>
+                    Artifacts have a <strong>0.7%</strong> drop chance
+                    while mining.
+                </p>
+
+                <p>
+                    Identify artifacts at
+                    <code>/mine artifacts</code>.
+                    Identification time depends on artifact tier.
+                </p>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Tier</th>
+                                <th>Identify Time</th>
+                                <th>Sell Price</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Basic</td>
+                                <td>10 min</td>
+                                <td>$25</td>
+                            </tr>
+
+                            <tr>
+                                <td>Unusual</td>
+                                <td>20 min</td>
+                                <td>$50</td>
+                            </tr>
+
+                            <tr>
+                                <td>Epic</td>
+                                <td>40 min</td>
+                                <td>$75</td>
+                            </tr>
+
+                            <tr>
+                                <td>Exceptional</td>
+                                <td>60 min</td>
+                                <td>$100</td>
+                            </tr>
+
+                            <tr>
+                                <td>Legendary</td>
+                                <td>100 min</td>
+                                <td>$150</td>
+                            </tr>
+
+                            <tr>
+                                <td>Fabled</td>
+                                <td>140 min</td>
+                                <td>$200</td>
+                            </tr>
+
+                            <tr>
+                                <td>Mythic</td>
+                                <td>180 min</td>
+                                <td>$250</td>
+                            </tr>
+
+                            <tr>
+                                <td>Celestial</td>
+                                <td>220 min</td>
+                                <td>$350</td>
+                            </tr>
+
+                            <tr>
+                                <td>Divine</td>
+                                <td>260 min</td>
+                                <td>$500</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="card">
+
+                    <strong>Artifact Tier Distribution</strong>
+
+                    <p>
+                        Basic 43% · Unusual 20% · Epic 14% ·
+                        Exceptional 10% · Legendary 6% · Fabled 4% ·
+                        Mythic 2.4% · Celestial 0.5% · Divine 0.1%
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOSSILS -->
+
+            <section id="fossils">
+
+                <h2>🦴 Fossils</h2>
+
+                <p>
+                    Fossils are obtained by identifying artifacts.
+                </p>
+
+                <div class="grid">
+
+                    <div class="stat">
+                        <div class="stat-title">
+                            Identification Time
+                        </div>
+
+                        <div class="stat-value">
+                            60 minutes
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-title">
+                            Parts Required
+                        </div>
+
+                        <div class="stat-value">
+                            8
+                        </div>
+                    </div>
+
+                </div>
+
+                <p>
+                    Collect all 8 parts of the same creature:
+                </p>
+
+                <div class="card">
+
+                    Skull · Arm · Spine · Rib · Tail ·
+                    Wing · Leg · Foot
+
+                </div>
+
+                <p>
+                    Once you have a complete set, use a Refinery
+                    to craft a Vessel.
+                </p>
+
+                <div class="tip">
+                    Fossils are the only path to Vessels.
+                </div>
+
+            </section>
+
+
+            <!-- VESSELS -->
+
+            <section id="vessels">
+
+                <h2>⚗️ Vessels</h2>
+
+                <p>
+                    Vessels provide custom pickaxe enchantments.
+                </p>
+
+                <ol>
+
+                    <li>
+                        Craft a Vessel in the Refinery from
+                        8 matching Fossils.
+                    </li>
+
+                    <li>
+                        Apply the Vessel to your pickaxe by dragging
+                        it onto the pickaxe.
+                    </li>
+
+                    <li>
+                        This begins Vessel Progression and marks
+                        your pickaxe.
+                    </li>
+
+                    <li>
+                        Progress through Thralls and eventually
+                        a Vessel Boss.
+                    </li>
+
+                    <li>
+                        Defeat the boss using the correct Requium order.
+                    </li>
+
+                    <li>
+                        The Vessel enchantment is then applied.
+                    </li>
+
+                </ol>
+
+                <div class="warning">
+                    ⚠️ Only one Vessel can be progressed at a time
+                    on a pickaxe.
+                </div>
+
+                <p>
+                    Vessels can be removed through
+                    <code>/mine vessels</code> for a Zeta fee.
+                    This returns Vessel items for levels and progress
+                    on that pickaxe.
+                </p>
+
+            </section>
+
+
+            <!-- THRALLS -->
+
+            <section id="thralls">
+
+                <h2>🕳️ Thralls, Requiums & Vessel Boss</h2>
+
+                <h3>Thralls</h3>
+
+                <div class="grid">
+
+                    <div class="stat">
+                        <div class="stat-title">
+                            Spawn Chance
+                        </div>
+
+                        <div class="stat-value">
+                            7%
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-title">
+                            Spawn Cooldown
+                        </div>
+
+                        <div class="stat-value">
+                            2 minutes
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-title">
+                            Base HP
+                        </div>
+
+                        <div class="stat-value">
+                            12
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-title">
+                            Base Damage
+                        </div>
+
+                        <div class="stat-value">
+                            2
+                        </div>
+                    </div>
+
+                </div>
+
+                <p>
+                    Each Thrall kill grants:
+                </p>
+
+                <ul>
+                    <li>Requium Progress: +5.25 to +10.75</li>
+                    <li>Anger: +1.00 to +5.00</li>
+                </ul>
+
+                <p>
+                    Anger reveals the required Requium orb
+                    slot-by-slot as it fills.
+                </p>
+
+
+                <h3>Vessel Boss</h3>
+
+                <div class="boss">
+
+                    <strong>Boss Base Stats</strong>
+
+                    <ul>
+                        <li>150 HP</li>
+                        <li>2 Damage</li>
+                        <li>+50 HP per Vessel level</li>
+                        <li>+2 Damage per Vessel level</li>
+                        <li>Maximum HP: 2000</li>
+                    </ul>
+
+                </div>
+
+                <p>
+                    The Vessel Boss spawns while mining during
+                    progression.
+                </p>
+
+                <p>
+                    To defeat it, place the correct three Requium
+                    orbs in <code>/mine vessels</code>.
+                </p>
+
+                <div class="warning">
+                    ⚠️ Requium order matters.
+                    A failed order check causes the boss to despawn.
+                </div>
+
+
+                <h3>Requium Orbs</h3>
+
+                <ul>
+                    <li>
+                        Found in higher-tier artifacts.
+                    </li>
+
+                    <li>
+                        Shattered Requium Orbs can be combined:
+                        <strong>4 shards → 1 random Requium</strong>.
+                    </li>
+
+                    <li>
+                        Set orbs for Slots 1–3 in
+                        <code>/mine vessels</code>.
+                    </li>
+                </ul>
+
+            </section>
+
+
+            <!-- RUNES -->
+
+            <section id="runes">
+
+                <h2>🌀 Runes & Singularity</h2>
+
+                <p>
+                    Runes provide passive progression upgrades.
+                </p>
+
+                <div class="card">
+
+                    <p>
+                        <strong>Summon Block:</strong>
+                        <code>REDSTONE_ORE</code>
+                    </p>
+
+                    <p>
+                        Right-click the block with Rune Dust
+                        to open the guardian menu.
+                    </p>
+
+                </div>
+
+
+                <h3>Rune Guardian</h3>
+
+                <div class="grid">
+
+                    <div class="stat">
+                        <div class="stat-title">
+                            Cooldown
+                        </div>
+
+                        <div class="stat-value">
+                            40s
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-title">
+                            Base Rune Drop Chance
+                        </div>
+
+                        <div class="stat-value">
+                            50%
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-title">
+                            HP
+                        </div>
+
+                        <div class="stat-value">
+                            200
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-title">
+                            Damage
+                        </div>
+
+                        <div class="stat-value">
+                            10
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <h3>Singularity</h3>
+
+                <p>
+                    Open <code>/mine singularity</code> to spend
+                    runes on passive upgrades.
+                </p>
+
+                <ul>
+                    <li>More Zeta</li>
+                    <li>Cheaper Upgrades</li>
+                    <li>Rune Drop Chance</li>
+                    <li>Requium Progress</li>
+                    <li>Oracle Damage Mitigation</li>
+                    <li>Other passive bonuses</li>
+                </ul>
+
+            </section>
+
+
+            <!-- ORACLES -->
+
+            <section id="oracles">
+
+                <h2>🧿 Oracles</h2>
+
+                <p>
+                    Oracles are end-game side bosses.
+                </p>
+
+                <div class="card">
+
+                    <p>
+                        <strong>Summon Block:</strong>
+                        <code>EMERALD_ORE</code>
+                    </p>
+
+                    <p>
+                        You need Charged Oracleite.
+                        Refine Mysterious Dust at level 20+
+                        to obtain Oracleite.
+                    </p>
+
+                    <p>
+                        Mine <strong>35 Diamond Ore</strong>
+                        while holding Oracleite in your off-hand
+                        to charge it.
+                    </p>
+
+                </div>
+
+
+                <h3>Phases</h3>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Phase</th>
+                                <th>Required Level</th>
+                                <th>HP</th>
+                                <th>Damage</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Phase 1</td>
+                                <td>40</td>
+                                <td>1100</td>
+                                <td>14</td>
+                            </tr>
+
+                            <tr>
+                                <td>Phase 2</td>
+                                <td>45</td>
+                                <td>1600</td>
+                                <td>18</td>
+                            </tr>
+
+                            <tr>
+                                <td>Phase 3</td>
+                                <td>50</td>
+                                <td>2000</td>
+                                <td>28</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="warning">
+
+                    ⏱️ Oracle summons have a
+                    <strong>30-minute cooldown</strong>.
+
+                </div>
+
+                <p>
+                    Oracle phases can teleport, gain movement buffs,
+                    and have unique drop tables.
+                </p>
+
+                <p>
+                    Drops include high-tier artifacts, runes needed
+                    for later phases, Zeta Tears, and other advanced
+                    items.
+                </p>
+
+            </section>
+
+
+            <!-- ZETA -->
+
+            <section id="zeta">
+
+                <h2>🪙 Zeta</h2>
+
+                <p>
+                    Zeta is the primary PyroMining currency.
+                </p>
+
+                <p>
+                    Earn Zeta by mining ores or obtaining items such
+                    as Zeta Tears.
+                </p>
+
+                <p>
+                    Check your balance with
+                    <code>/mine zeta</code>.
+                </p>
+
+
+                <h3>Ore → Zeta</h3>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Ore</th>
+                                <th>Zeta / Break</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><code>DIAMOND_ORE</code></td>
+                                <td>350</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>EMERALD_ORE</code></td>
+                                <td>400</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>LAPIS_ORE</code></td>
+                                <td>130</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>REDSTONE_ORE</code></td>
+                                <td>70</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>IRON_ORE</code></td>
+                                <td>25</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>GOLD_ORE</code></td>
+                                <td>40</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <code>NETHER_QUARTZ_ORE</code>
+                                </td>
+                                <td>30</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <code>NETHER_GOLD_ORE</code>
+                                </td>
+                                <td>30</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Coal / Copper
+                                </td>
+                                <td>30</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <p>
+                    Zeta is used for artifact and Vessel upgrades,
+                    Vessel crafting, and other PyroMining features.
+                </p>
+
+            </section>
+
+
+            <!-- LEVELS -->
+
+            <section id="levels">
+
+                <h2>📈 Mining Levels</h2>
+
+                <div class="card">
+
+                    <p>
+                        You start with an XP requirement of
+                        <strong>2,000 XP</strong>.
+                    </p>
+
+                    <p>
+                        Each level increases the requirement by
+                        <strong>1.125×</strong>.
+                    </p>
+
+                </div>
+
+
+                <h3>Mining XP</h3>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Ore</th>
+                                <th>XP</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td><code>DIAMOND_ORE</code></td>
+                                <td>150</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>EMERALD_ORE</code></td>
+                                <td>200</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>LAPIS_ORE</code></td>
+                                <td>50</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>REDSTONE_ORE</code></td>
+                                <td>35</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>IRON_ORE</code></td>
+                                <td>25</td>
+                            </tr>
+
+                            <tr>
+                                <td><code>GOLD_ORE</code></td>
+                                <td>40</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    Coal / Copper / Quartz
+                                </td>
+                                <td>15</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- SEASONAL -->
+
+            <section id="seasonal">
+
+                <h2>🎃 Seasonal Event: The Unknown</h2>
+
+                <div class="boss">
+
+                    <h3>Halloween Event</h3>
+
+                    <p>
+                        <strong>Active:</strong>
+                        October 22 → November 8
+                    </p>
+
+                    <p>
+                        The Unknown can spawn while mining.
+                    </p>
+
+                    <ul>
+                        <li>Spawn chance: 1.6%</li>
+                        <li>Personal cooldown: 30 seconds</li>
+                        <li>Base HP: 300</li>
+                        <li>Base damage: 7</li>
+                    </ul>
+
+                    <p>
+                        Some variants deal more damage in darkness.
+                    </p>
+
+                </div>
+
+                <p>
+                    The event is time-limited and includes special
+                    rewards. Watch server announcements for details.
+                </p>
+
+            </section>
+
+
+            <!-- COMMANDS -->
+
+            <section id="commands">
+
+                <h2>🧰 Helpful Commands</h2>
+
+                <div class="command-list">
+
+                    <div class="command">
+                        <code>/mine</code>
+                        <span class="command-description">
+                            Open PyroMining menu
+                        </span>
+                    </div>
+
+                    <div class="command">
+                        <code>/mine menu</code>
+                        <span class="command-description">
+                            Open the main mining menu
+                        </span>
+                    </div>
+
+                    <div class="command">
+                        <code>/mine shop</code>
+                        <span class="command-description">
+                            Sell mining items
+                        </span>
+                    </div>
+
+                    <div class="command">
+                        <code>/mine artifacts</code>
+                        <span class="command-description">
+                            Manage / identify artifacts and fossils
+                        </span>
+                    </div>
+
+                    <div class="command">
+                        <code>/mine vessels</code>
+                        <span class="command-description">
+                            Vessel progression and Requiums
+                        </span>
+                    </div>
+
+                    <div class="command">
+                        <code>/mine stats</code>
+                        <span class="command-description">
+                            View PyroMining statistics
+                        </span>
+                    </div>
+
+                    <div class="command">
+                        <code>/mine zeta</code>
+                        <span class="command-description">
+                            Check Zeta balance
+                        </span>
+                    </div>
+
+                    <div class="command">
+                        <code>/mine journal</code>
+                        <span class="command-description">
+                            In-game reference and tips
+                        </span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="hero" style="margin-top:50px;">
+
+                <h2 style="margin-top:0;border:0;">
+                    ⛏️ Happy Mining!
+                </h2>
+
+                <p>
+                    Explore PyroMining, collect rare artifacts,
+                    craft Vessels, defeat bosses, and upgrade your
+                    mining progression.
+                </p>
+
+            </section>
+
+        </article>
+    </main>
+
+</div>
+
+
+<footer>
+
+    MythicaOnline WIKI · PyroMining Guide
+
+</footer>
+
+
+</body>
+</html>
