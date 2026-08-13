@@ -3,229 +3,644 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playtime Ranks</title>
+
+    <title>Mythica Online - Ranks</title>
 
     <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #111318;
-      color: #f5f5f5;
-      line-height: 1.6;
-    }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                linear-gradient(rgba(10, 10, 15, 0.92), rgba(10, 10, 15, 0.96)),
+                url("https://images.unsplash.com/photo-1605898835657-4c6e4c7b6f77?auto=format&fit=crop&w=2000&q=80");
+            background-size: cover;
+            background-attachment: fixed;
+            color: #ffffff;
+            line-height: 1.6;
+        }
 
-    header {
-      background: #4E416C;
-      padding: 10px 20px;
-      text-align: center;
-      border-bottom: 5px solid #F6CA0E;
-    }
+        /* HEADER */
 
-    header h1 {
-      font-size: 50px;
-      margin-bottom: 10px;
-	  text-color: #F6CA0E;
-    }
-	
-    
-    header p {
-      font-size: 18px;
-      color: white;
-    }
+        header {
+            text-align: center;
+			font-size: 20px; 
+            padding: 10px 20px;
+            background: #4E416C;
+            border-bottom: 5px solid #F6CA0E;
+        }
 
-    .container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+        .logo {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
 
-    .intro {
-      background: #222;
-      padding: 25px;
-      border-radius: 10px;
-      margin-bottom: 25px;
-      border-left: 5px solid #F6CA0E;
-    }
+        .subtitle {
+            margin-top: 10px;
+            color: #b7b7b7;
+            font-size: 17px;
+        }
 
-    .rules {
-      display: grid;
-      gap: 18px;
-    }
+        .progress {
+            margin-top: 15px;
+            color: #9d9d9d;
+            font-size: 14px;
+        }
 
-    .rule {
-      background: #4E416C;
-      padding: 22px;
-      border-radius: 10px;
-      border: 1px solid #333;
-      transition: transform 0.2s, border-color 0.2s; 
-    }
+        /* MAIN */
 
-    .rule:hover {
-      transform: translateY(-3px);
-      border-color: #F6CA0E;
-    }
-	
-	.rule h1 {
-	  color: #F6CA0E;
-	}
-	
-    .rule h2 {
-      color: #F6CA0E;
-      margin-bottom: 8px;
-      font-size: 22px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 20px 80px;
+        }
 
-    .rule p {
-      color: white;
-    }
+        .intro {
+            text-align: center;
+            margin-bottom: 45px;
+        }
 
-    .number {
-      display: inline-block;
-      background: #8b5cf6;
-      color: white;
-      line-height: 32px;
-      text-align: center;
-      border-radius: 6px;
-      margin-right: 10px;
-	  padding: 2px;
-      font-weight: bold;
-    }
+        .intro h1 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
 
-    .warning {
-      margin-top: 30px;
-      padding: 20px;
-      background: #3d2f16;
-      border: 1px solid #795548;
-      border-radius: 10px;
-      color: #ffe0b2;
-    }
-	
-	a {
-	  color: #F6CA0E;
-	}
+        .intro p {
+            color: #aaa;
+            max-width: 700px;
+            margin: auto;
+        }
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 50px;
-      background: #101010;
-      color: #F6CA0E;
-    }
+        /* RANK GRID */
 
-    footer strong {
-      color: #8b5cf6;
-    }
+        .ranks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 30px;
-      }
+        .rank {
+            position: relative;
+            background: rgba(22, 22, 28, 0.94);
+            border: 3px solid #F6CA0E;
+            border-radius: 14px;
+            padding: 28px;
+            transition: 0.25s ease;
+            overflow: hidden;
+        }
 
-      .container {
-        margin-top: 25px;
-      }
-	}
-    }
-  </style>
- </head>
+        .rank:hover {
+            transform: translateY(-6px);
+            border-color: #F6CA0E;
+            box-shadow: 0 5px 30px rgba(246,202,14,1.0);
+        }
+
+        .rank::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: #777;
+        }
+
+        .rank-number {
+            color: #F6CA0E;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rank h2 {
+            font-size: 28px;
+            margin-top: 5px;
+        }
+
+        .rank-name {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .time {
+            display: inline-block;
+            padding: 7px 12px;
+            background: rgba(255,255,255,0.07);
+            border-radius: 6px;
+            color: #ddd;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .perks-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #F6CA0E;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 25px;
+            margin: 10px 0;
+            color: #ddd;
+        }
+
+        li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #71d47b;
+            font-weight: bold;
+        }
+		
+		.gradient-text {
+        background: linear-gradient(90deg, #fff, #F6CA0E, #8b5cf6);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+		}
+
+        /* SPECIAL RANKS */
+		
+		.kobold {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(108, 45, 69, 1.00)
+            );
+		}
+		
+		.kobold::before {
+            background: linear-gradient(90deg, #6C2D45, black);
+        }
+		
+		.goblin {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(70, 159, 44, 1.00)
+            );
+		}
+		
+		.goblin::before {
+            background: linear-gradient(90deg, #469F2C, black);
+        }
+		
+		.orcish {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(131, 159, 41, 1.00)
+            );
+		}
+		
+		.orcish::before {
+            background: linear-gradient(90deg, #839F29, black);
+        }
+		
+		.satyr {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(161, 45, 111, 1.00)
+            );
+		}
+		
+		.satyr::before {
+            background: linear-gradient(90deg, #A12D6F, black);
+        }
+
+		.dryad {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(81, 74, 212, 1.00)
+            );
+		}
+		
+        .dryad::before {
+            background: linear-gradient(90deg, #514AD4, black);
+        }
+
+		.hydra {
+		  border-color: rgba(255, 180, 50, 0.35);
+          background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(49, 228, 240, 1.00)
+            );
+		}
+		
+        .hydra::before {
+            background: linear-gradient(90deg, #28D4A6, black);
+        }
+		
+        .chimera {
+			border-color: rgba(255, 180, 50, 0.35);
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(255, 147, 10, 1.00)
+            );
+		}
+			
+        .chimera::before {
+			background: linear-gradient(90deg, #ff8a00, black);
+            
+        }
+
+        .dragon {
+            border-color: rgba(255, 180, 50, 0.35);
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.77),
+                rgba(202, 91, 218, 1.00)
+            );
+        }
+
+        .dragon::before {
+            background: linear-gradient(90deg, #FF47FF, black);
+        }
+
+        .dragon h2 {
+            color: #ffc45b;
+        }
+
+        /* IMPORTANT NOTICE */
+
+        .notice {
+            margin-top: 45px;
+            padding: 20px 25px;
+            background: rgba(255, 185, 60, 0.08);
+            border: 1px solid rgba(255, 185, 60, 0.25);
+            border-radius: 10px;
+            color: #cfcfcf;
+        }
+
+        .notice strong {
+            color: #ffc45b;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0,0,0,0.5);
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 50px 15px 40px;
+            }
+
+            .logo {
+                font-size: 32px;
+            }
+
+            .intro h1 {
+                font-size: 28px;
+            }
+
+            .rank {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
 
 <body>
 
-  <header>
+<header>
+
     <h1><a href="../index.html" style="color: white; text-decoration: none;">⛏ Mythica Playtime Ranks</a></h1>
-    <p>Just play and unlock ranks with perks! /Ar Check to see progress.<br>The default rank is [Kobold] everyone starts here.</p>
-  </header>
 
-  <main class="container">
+    <div class="subtitle">
+        Play to earn playtime and automatically unlock new ranks with perks.
+    </div>
+</header>
 
 
-    <section class="rules">
+<main class="container">
 
-      <div class="rule">
-        <h2><span class="number">1 Hour</span>The Fiendish [Goblin]</h2>
+    <div class="intro">
+
+        <h2>What do you unlock?</h2>
+
         <p>
-          <li>+1 extra home
-          <li>/Stonecutter
+            The longer you play on Mythica Online, the more ranks and perks you unlock.
+            Start as a Kobold and work your way up to the legendary Dragon rank.
         </p>
-      </div>
 
-      <div class="rule">
-        <h2><span class="number">1 Day</span>The Big Brute [Orcish]</h2>
-        <p>
-          <li>+1 extra home
-		  <li>Backpack Upgrade 2
-		  <li>Access to /Hat and /Disposal
-        </p>
-      </div>
-	  
-	  <div class="rule">
-        <h2><span class="number">3 Days</span>The Wildling [Satyr]</h2>
-        <p>
-          <li>+1 extra home
-		  <li>Backpack Upgrade 3
-		  <li>Access to /Nickname and /Condense
-        </p>
-      </div>
+    </div>
 
-      <div class="rule">
-        <h2><span class="number">7 Days</span>The Spirited [Dryad]</h2>
-        <p>
-          <li>+1 extra home
-		  <li>Backpack Upgrade 4
-		  <li>Access to /Workbench, /Anvil and /Enderchest (/EC)
-		  <li><b>25% Discount In-Game Shop</b>
-		  <li><b>25% Boost to mcMMO gains</b>
-        </p>
-      </div>
 
-      <div class="rule">
-        <h2><span class="number">14 Days</span>The Serpent [Hydra].</h2>
-        <p>
-          <li>+1 extra home
-		  <li>Backpack Upgrade 5
-		  <li>Access to /Smithingtable, /Feed, /Loom and /Kit Hydra
-        </p>
-      </div>
+    <section class="ranks">
 
-      <div class="rule">
-        <h2><span class="number">21 Days</span>The Hybrid [Chimera]</h2>
-        <p>
-          <li>+1 extra home
-		  <li>Backpack Upgrade 6 (Max)
-		  <li>Access to /Ptime, /Top, /Fix and /Kit Chimera
-        </p>
-      </div>
 
-      <div class="rule">
-        <h2><span class="number">30 Days</span>The Ender [Dragon]</h2>
-        <p>
-          <li>+1 extra home
-		  <li>Access to /Fly and /Kit Dragon
-		  <li><b>50% Discount In-Game Shop</b>
-        </p>
-      </div>
+        <!-- KOBOLD -->
+
+        <div class="rank kobold">
+
+            <div class="rank-number">
+                Starting Rank
+            </div>
+
+            <h2 style="color: #A94D5B;">🐺 Kobold</h2>
+
+            <div class="rank-name">
+                The Lurking...
+            </div>
+
+            <div class="time">
+                Starting Rank
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>Default rank for all players</li>
+                <li>5 Homesets</li>
+				<li>Basic Commands
+            </ul>
+
+        </div>
+
+
+        <!-- GOBLIN -->
+
+        <div class="rank goblin">
+
+            <div class="rank-number">
+                Rank #1
+            </div>
+
+            <h2 style="color: #469F2C;">👺 Goblin</h2>
+
+            <div class="rank-name">
+                The Fiendish
+            </div>
+
+            <div class="time">
+                ⏳ 1 Hour
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Access to <strong>/Stonecutter</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- ORC -->
+
+        <div class="rank orcish">
+
+            <div class="rank-number">
+                Rank #2
+            </div>
+
+            <h2 style="color: #839F29;">👹 Orcish</h2>
+
+            <div class="rank-name">
+                The Big Brute
+            </div>
+
+            <div class="time">
+                ⏳ 1 Day
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Backpack Upgrade 2</li>
+                <li>Access to <strong>/Hat</strong></li>
+                <li>Access to <strong>/Disposal</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- SATYR -->
+
+        <div class="rank satyr">
+
+            <div class="rank-number">
+                Rank #3
+            </div>
+
+            <h2 style="color: #A12D6F;">🐐 Satyr</h2>
+
+            <div class="rank-name">
+                The Wildling
+            </div>
+
+            <div class="time">
+                ⏳ 3 Days
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Backpack Upgrade 3</li>
+                <li>Access to <strong>/Nickname</strong></li>
+                <li>Access to <strong>/Condense</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- DRYAD -->
+
+        <div class="rank dryad">
+
+            <div class="rank-number">
+                Rank #4
+            </div>
+
+            <h2 style="color: #514AD4;">🌿 Dryad</h2>
+
+            <div class="rank-name">
+                The Spirited
+            </div>
+
+            <div class="time">
+                ⏳ 7 Days
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Backpack Upgrade 4</li>
+                <li>Access to <strong>/Workbench</strong></li>
+                <li>Access to <strong>/Anvil</strong></li>
+                <li>Access to <strong>/Enderchest</strong> (<strong>/EC</strong>)</li>
+                <li>25% discount in the in-game shop</li>
+                <li>25% boost to mcMMO gains</li>
+            </ul>
+
+        </div>
+
+
+        <!-- HYDRA -->
+
+        <div class="rank hydra">
+
+            <div class="rank-number">
+                Rank #5
+            </div>
+
+            <h2 style="color: #28D4A6;">🐍 Hydra</h2>
+
+            <div class="rank-name">
+                The Serpent
+            </div>
+
+            <div class="time">
+                ⏳ 14 Days
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Backpack Upgrade 5</li>
+                <li>Access to <strong>/Smithingtable</strong></li>
+                <li>Access to <strong>/Feed</strong></li>
+                <li>Access to <strong>/Loom</strong></li>
+                <li>Access to <strong>/Kit Hydra</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- CHIMERA -->
+
+        <div class="rank chimera">
+
+            <div class="rank-number">
+                Rank #6
+            </div>
+
+            <h2 style="color: #FFA814;">🦁 Chimera</h2>
+
+            <div class="rank-name">
+                The Hybrid
+            </div>
+
+            <div class="time">
+                ⏳ 21 Days
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Backpack Upgrade 6 — Maximum</li>
+                <li>Access to <strong>/Ptime</strong></li>
+                <li>Access to <strong>/Top</strong></li>
+                <li>Access to <strong>/Fix</strong></li>
+                <li>Access to <strong>/Kit Chimera</strong></li>
+            </ul>
+
+        </div>
+
+
+        <!-- DRAGON -->
+
+        <div class="rank dragon">
+
+            <div class="rank-number">
+                Final Rank
+            </div>
+
+            <h2 style="color: #FF1EEF;">🐉 Dragon</h2>
+
+            <div class="rank-name">
+                The Ender
+            </div>
+
+            <div class="time">
+                ⏳ 30 Days
+            </div>
+
+            <div class="perks-title">
+                Rank Perks
+            </div>
+
+            <ul>
+                <li>+1 extra home</li>
+                <li>Access to <strong>/Fly</strong></li>
+                <li>Access to <strong>/Kit Dragon</strong></li>
+                <li><strong>50% discount</strong> in the in-game shop</li>
+            </ul>
+
+        </div>
+
 
     </section>
 
-    <div class="warning">
-      <strong>⚠️ Important:</strong>
-      AFK time is not included in AutoRanks playtime! There will be slight differences when you /playtime vs. /Ar Check
-	  <br><center>Perks are subject to change at anytime.
+
+    <div class="notice">
+
+        <strong><center>⚠ Important:</strong>
+
+        <br>AFK time is not included in AutoRanks playtime.
+        There may be slight differences between your
+        <strong>/Playtime</strong> and <strong>/Ar Check</strong> results.
+
+        <br><br>
+
+        <center>Rank perks are subject to change at any time.
+
     </div>
 
-  </main>
+</main>
 
-  <footer>
-    <p>
-      <strong>MythicaOnline</strong> © 2026
-    </p>
-    <p>Enjoy your stay!</p>
-  </footer>
+
+<footer>
+
+    MythicaOnline © 2026
+    <br>
+    Enjoy your stay!
+
+</footer>
 
 </body>
 </html>
