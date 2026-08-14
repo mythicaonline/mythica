@@ -14,12 +14,27 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica; sans-serif;
       background: #111318;
       color: #f5f5f5;
       line-height: 1.6;
     }
 
+	/* Apply the custom cursor to the entire webpage */
+        html, body {
+        cursor: url('../images/hand.png'), auto;
+    }
+		
+	/* Optional: Use a different custom cursor when hovering over links or buttons */
+		a, button {
+		cursor: url('../images/arrow.png'), pointer;
+    }
+	
+	/* Optional: Use custom cursor when needing to insert text*/
+	   input {
+	   cursor: url('../images/pencil.png'), auto;
+	}
+	
     header {
       background: #4E416C;
       padding: 10px 20px;
@@ -183,16 +198,7 @@
         <p>
           Here at Mythica we use GriefPrevention. You can claimland using a golden shovel! Watch the video below.
 		<div class="video-container">
-     <iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/VDsjXB-BaE0"
-  title="YouTube video player"
-  referrerpolicy="strict-origin-when-cross-origin"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen>
-</iframe> 
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/f9OhYrxEPws" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> 
 </div>
 
 <style>
