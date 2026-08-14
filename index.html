@@ -43,6 +43,21 @@
             color: var(--text);
             min-height: 100vh;
         }
+		
+		/* Apply the custom cursor to the entire webpage */
+        html, body {
+            cursor: url('images/hand.png'), auto;
+        }
+		
+		/* Optional: Use a different custom cursor when hovering over links or buttons */
+		a, button {
+		    cursor: url('images/arrow.png'), pointer;
+        }
+		
+		/* Optional: Use custom cursor when needing to insert text*/
+	    input {
+			cursor: url('images/pencil.png'), auto;
+		}
 
         /* =========================
            SIDEBAR
